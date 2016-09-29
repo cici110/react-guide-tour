@@ -1,6 +1,6 @@
 {
   "name": "react-guide-tour",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A fantastic site guide tour written with React",
   "main": "app/components/ReactGuideTour.js",
   "scripts": {

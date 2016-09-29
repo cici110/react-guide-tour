@@ -2,7 +2,7 @@
   "name": "react_guide_tour",
   "version": "1.0.0",
   "description": "A fantastic site guide tour written with React",
-  "main": "index.js",
+  "main": "app/components/ReactGuideTour.js",
   "scripts": {
     "test": "karma start",
     "test:multi": "karma start  --single-run=false",

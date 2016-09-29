@@ -4,7 +4,7 @@ An fantastic step-based site tour written with React
 
 ## Screen Shoot
 
-![](./rgt.gif)
+![](./blob/master/rgt.gif)
  
 ## Install
  

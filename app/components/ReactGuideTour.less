@@ -1,0 +1,195 @@
+.FFont14 {
+  font-size: 14px;
+}
+.react-guide-tour {
+  .tour-overlay {
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    opacity: 0;
+  }
+  .tour-overlay.tour-active {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #000000;
+    opacity: 0.6;
+  }
+  .tour-modal {
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -ms-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: rgba(0, 0, 0, 0.5) 0 0 3px;
+  }
+  .tour-modal.tour-active {
+    position: fixed;
+    opacity: 1;
+    width: 320px;
+    border-radius: 6px;
+    background: #333333;
+  }
+  .tour-modal.tour-end {
+    width: 356px;
+  }
+  .tour-arrow {
+    border: 8px solid #333333;
+    content: '';
+    position: absolute;
+    background: transparent;
+  }
+  .tour-arrow.tour-arrow-top {
+    top: -16px;
+    left: 16px;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-left-color: transparent;
+  }
+  .tour-arrow.tour-arrow-left {
+    top: 16px;
+    left: -16px;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+  }
+  .tour-arrow.tour-arrow-right {
+    top: 16px;
+    right: -16px;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+  }
+  .tour-arrow.tour-arrow-bottom {
+    bottom: -16px;
+    left: 16px;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+  }
+  .tour-arrow.tour-arrow-none {
+    display: none;
+  }
+  .tour-message-container {
+    border-radius: 0 0 6px 6px;
+    .tour-message-image {
+      padding: 24px 32px;
+      img {
+        width: 256px;
+        height: 192px;
+      }
+    }
+    .tour-message-text {
+      padding: 20px 24px;
+      background-color: rgba(0, 0, 0, 0.72);
+      font-size: 14px;
+      color: #ffffff;
+    }
+  }
+  .tour-end .tour-message-image {
+    padding-top: 32px;
+    img {
+      width: 296px;
+      height: 204px;
+    }
+  }
+  .tour-end .tour-message-text {
+    background: inherit;
+    padding: 0px 24px;
+  }
+  .tour-button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: rgba(0, 0, 0, 0.72);
+    padding: 16px 0 20px 0;
+    button {
+      border: none;
+      cursor: pointer;
+      min-width: initial;
+      background-color: transparent;
+      color: #ffffff;
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+    button.tour-skip-button {
+      background: #ccc;
+      padding: 0;
+      width: 16px;
+      height: 16px;
+      svg {
+        width: 12px;
+        height: 12px;
+      }
+    }
+    button.tour-prev-button {
+      background: #aaa;
+      padding: 0;
+      width: 24px;
+      height: 24px;
+    }
+    button.tour-next-button {
+      background: #aaa;
+      padding: 0;
+      width: 24px;
+      height: 24px;
+    }
+  }
+  .tour-end .tour-button-container {
+    background: initial;
+    padding: 24px;
+    .btn-tour-end {
+      line-height: 34px;
+      padding: 0 8px;
+      width: 100%;
+      box-sizing: border-box;
+      margin-right: 10px;
+      border-radius: 3px;
+      color: white;
+      border: 0 !important;
+      background-color: #4A90E2 !important;
+      .FFont14;
+    }
+  }
+  .tour-steps-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding-left: 48px;
+  }
+  .tour-steps-icons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  .tour-step-icon {
+    width: 6px;
+    content: '';
+    height: 6px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.72);
+    margin: 6px 5px;
+    cursor: pointer;
+    &:hover {
+      background: #508EFA;
+    }
+  }
+  .tour-step-icon.tour-step-icon-active {
+    background: #508EFA;
+  }
+
+}

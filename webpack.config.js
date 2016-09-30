@@ -21,9 +21,11 @@ var config = {
   entry: [
     'webpack/hot/dev-server',
     'webpack-dev-server/client?http://localhost:3000',
-    //'./app/index.js'      //入口文件
-    './app/components/ReactGuideTour.js'
-    ],                
+    './app/index.js'      //入口文件
+    ],  
+  // entry: [
+  //   './app/components/ReactGuideTour.js'
+  //   ],                
   output: {
     path: path.resolve(__dirname, 'dist'),  // 指定编译后的代码位置
     filename: outputFile

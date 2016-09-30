@@ -18,24 +18,24 @@ if (env === 'build') {
 }
 
 var config = {
-  // entry: [
-  //   'webpack/hot/dev-server',
-  //   'webpack-dev-server/client?http://localhost:3000',
-  //   './app/index.js'      //入口文件
-  //   ],  
-  //   output: {
-  //   path: path.resolve(__dirname, 'dist'),  // 指定编译后的代码位置
-  //   filename: outputFile
-  // },
-    entry: [
-    './app/components/ReactGuideTour.js'
-    ], 
-
-  output: {
+  entry: [
+    'webpack/hot/dev-server',
+    'webpack-dev-server/client?http://localhost:3000',
+    './app/index.js'      //入口文件
+    ],  
+    output: {
     path: path.resolve(__dirname, 'dist'),  // 指定编译后的代码位置
-    filename: "ReactGuideTour.js",
-    libraryTarget: "commonjs2"
+    filename: outputFile
   },
+  //   entry: [
+  //   './app/components/ReactGuideTour.js'
+  //   ], 
+
+  // output: {
+  //   path: path.resolve(__dirname, 'dist'),  // 指定编译后的代码位置
+  //   filename: "ReactGuideTour.js",
+  //   libraryTarget: "commonjs2"
+  // },
   devtool: 'source-map',
   module: {
     loaders: [

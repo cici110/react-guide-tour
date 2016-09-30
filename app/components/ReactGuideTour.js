@@ -62,7 +62,7 @@ export default class ReactGuideTour extends React.Component {
         if (this.props.autoPlay) {
             this.startTour();
         } else {
-            this.refs['react-guide-tour'].style.display = 'none';
+            this._tour.style.display = 'none';
         }
     };
 
@@ -79,7 +79,7 @@ export default class ReactGuideTour extends React.Component {
         $(window).resize(this.resizer);
         $(window).off('scroll', this.resizer);
         $(window).scroll(this.resizer);
-        this.refs['react-guide-tour'].style.display = 'block';
+        this._tour.style.display = 'block';
 
         this.setState({
             isTourActive: true,
@@ -203,7 +203,7 @@ export default class ReactGuideTour extends React.Component {
             var top, left, width, adjustTop;
             var bottom = 'initial';
             var height = 'auto';
-            var modalPad = parseInt($(this.refs['modal']).css('padding-left').replace('px', ''), 10) * 2;
+            var modalPad = parseInt($(this._modal).css('padding-left').replace('px', ''), 10) * 2;
             var scrollTop = window.pageYOffset;
             var scrollLeft = window.pageXOffset;
             switch (modalPosition) {
@@ -236,12 +236,12 @@ export default class ReactGuideTour extends React.Component {
 
                     break;
             }
-            this.refs['modal'].style.top = top;
-            //this.refs['modal'].style.bottom = bottom;
+            this._modal.style.top = top;
+            //this._modal.style.bottom = bottom;
             if (modalPosition === 'center') {
-                this.refs['modal'].style.left = left;
+                this._modal.style.left = left;
             } else {
-                this.refs['modal'].style.left = Math.floor(left).toString() + 'px';
+                this._modal.style.left = Math.floor(left).toString() + 'px';
             }
 
             // Set modal arrow position based on modal position
@@ -276,7 +276,7 @@ export default class ReactGuideTour extends React.Component {
             oldFocusElemStyle: null
         });
         setTimeout(() => {
-            this.refs['react-guide-tour'].style.display = 'none'
+            this._tour.style.display = 'none'
         }, 300);
         this.props.onTourEnd();
     };
@@ -287,10 +287,10 @@ export default class ReactGuideTour extends React.Component {
 
     render = () => {
         return (
-            <div ref='react-guide-tour' className='react-guide-tour'>
+            <div ref={(c) => this._tour = c} className='react-guide-tour'>
                 <div className={this.state.overlayClass} onClick = {this.props.enableSkip ? this.dismissTour : ""} 
                      style={{zIndex: this.state.overlayZindex}}/>
-                <div ref='modal' className={this.state.modalClass} style={{zIndex: this.state.overlayZindex + 1}}>
+                <div ref={(c) => this._modal = c} className={this.state.modalClass} style={{zIndex: this.state.overlayZindex + 1}}>
                     <div className={this.state.arrowClass}></div>
 
                     {

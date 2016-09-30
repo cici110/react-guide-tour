@@ -1,6 +1,6 @@
 {
   "name": "react-guide-tour",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A fantastic site guide tour written with React",
   "main": "dist/ReactGuideTour.js",
   "scripts": {

@@ -129,7 +129,7 @@ module.exports =
 	            if (_this.props.autoPlay) {
 	                _this.startTour();
 	            } else {
-	                _this.refs['react-guide-tour'].style.display = 'none';
+	                _this._tour.style.display = 'none';
 	            }
 	        }, _this.resizer = function () {
 	            var state = {
@@ -142,7 +142,7 @@ module.exports =
 	            (0, _jquery2.default)(window).resize(_this.resizer);
 	            (0, _jquery2.default)(window).off('scroll', _this.resizer);
 	            (0, _jquery2.default)(window).scroll(_this.resizer);
-	            _this.refs['react-guide-tour'].style.display = 'block';
+	            _this._tour.style.display = 'block';
 	
 	            _this.setState({
 	                isTourActive: true,
@@ -277,7 +277,7 @@ module.exports =
 	                var top, left, width, adjustTop;
 	                var bottom = 'initial';
 	                var height = 'auto';
-	                var modalPad = parseInt((0, _jquery2.default)(_this.refs['modal']).css('padding-left').replace('px', ''), 10) * 2;
+	                var modalPad = parseInt((0, _jquery2.default)(_this._modal).css('padding-left').replace('px', ''), 10) * 2;
 	                var scrollTop = window.pageYOffset;
 	                var scrollLeft = window.pageXOffset;
 	                switch (modalPosition) {
@@ -311,12 +311,12 @@ module.exports =
 	
 	                        break;
 	                }
-	                _this.refs['modal'].style.top = top;
-	                //this.refs['modal'].style.bottom = bottom;
+	                _this._modal.style.top = top;
+	                //this._modal.style.bottom = bottom;
 	                if (modalPosition === 'center') {
-	                    _this.refs['modal'].style.left = left;
+	                    _this._modal.style.left = left;
 	                } else {
-	                    _this.refs['modal'].style.left = Math.floor(left).toString() + 'px';
+	                    _this._modal.style.left = Math.floor(left).toString() + 'px';
 	                }
 	
 	                // Set modal arrow position based on modal position
@@ -368,7 +368,7 @@ module.exports =
 	                oldFocusElemStyle: null
 	            });
 	            setTimeout(function () {
-	                _this.refs['react-guide-tour'].style.display = 'none';
+	                _this._tour.style.display = 'none';
 	            }, 300);
 	            _this.props.onTourEnd();
 	        }, _this.getIconClassName = function (index) {
@@ -376,12 +376,16 @@ module.exports =
 	        }, _this.render = function () {
 	            return _react2.default.createElement(
 	                'div',
-	                { ref: 'react-guide-tour', className: 'react-guide-tour' },
+	                { ref: function ref(c) {
+	                        return _this._tour = c;
+	                    }, className: 'react-guide-tour' },
 	                _react2.default.createElement('div', { className: _this.state.overlayClass, onClick: _this.props.enableSkip ? _this.dismissTour : "",
 	                    style: { zIndex: _this.state.overlayZindex } }),
 	                _react2.default.createElement(
 	                    'div',
-	                    { ref: 'modal', className: _this.state.modalClass, style: { zIndex: _this.state.overlayZindex + 1 } },
+	                    { ref: function ref(c) {
+	                            return _this._modal = c;
+	                        }, className: _this.state.modalClass, style: { zIndex: _this.state.overlayZindex + 1 } },
 	                    _react2.default.createElement('div', { className: _this.state.arrowClass }),
 	                    _this.state.currentStep > -1 && _this.state.isTourActive ? _react2.default.createElement(
 	                        'div',

@@ -141,3 +141,7 @@ Public methods of rgt
         </tr>
     </tbody>
 </table>
+
+# Similar project(s)
+
+https://github.com/elrumordelaluz/reactour

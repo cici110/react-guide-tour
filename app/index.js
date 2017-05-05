@@ -40,6 +40,12 @@ var ReactGuideTourDemo = React.createClass({
                 modalPosition: 'left'
             },
             {
+                selector: '.stop-5',
+                message: 'The modal is on the left',
+                image:'http://placehold.it/256x192',
+                modalPosition: 'left'
+            },
+            {
                 message: 'Done',
                 modalPosition: 'center',
                 image:'http://placehold.it/296x204',
@@ -69,7 +75,7 @@ var ReactGuideTourDemo = React.createClass({
                 />
                 <div
                     style={{width: 200, height: 100, right: 0, top: "30%", position: "absolute", backgroundColor: "green"}}
-                    className="stop-4"
+                    className="stop-41"
                 />
                 <p style={{color: "black"}}>
                     Dolores phaedrum pri eu. Ex sit quot commune, ut eam error elitr scribentur. Quis reprimique in eos, eum intellegat persequeris te, no mei quidam reformidans. Fugit dignissim no qui, ut equidem scaevola has. Per odio facilisis ei, sed tale ignota quodsi id.
@@ -139,6 +145,14 @@ var ReactGuideTourDemo = React.createClass({
 
                 </p>
             </div>
+            <div
+                style={{width: 200, height: 100, right: 0, top: "30%", position: "relative", backgroundColor: "green"}}
+                className="stop-4"
+            />
+            <div
+                style={{width: 50, height: 50, right: 20, bottom:20, position: "absolute", backgroundColor: "pink"}}
+                className="stop-5"
+            />
             <div>
                 <ReactGuideTour ref='tour' enableAutoPositioning={true} steps={steps} onTourEnd={this.tourDismissed} />
             </div>

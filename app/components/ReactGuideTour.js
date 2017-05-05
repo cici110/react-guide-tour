@@ -187,9 +187,9 @@ export default class ReactGuideTour extends React.Component {
             if (this.props.enableAutoPositioning ) {
                 var positionEnabled = {};
                 positionEnabled['top'] = (elemTop > 150 && (winW - elemLeft > this.constants.MODAL_WIDTH));
-                positionEnabled['left'] = (elemLeft > this.constants.MODAL_WIDTH && ($(window).height() - elemTop > 150));
+                positionEnabled['left'] = (elemLeft > this.constants.MODAL_WIDTH && (winH - elemTop > 150));
                 positionEnabled['right'] = ((winW - elemLeft - elemW > this.constants.MODAL_WIDTH) && (winH - elemTop > 150));
-                positionEnabled['bottom'] = ((winH - elemTop - elemH > this.constants.MODAL_WIDTH) && (winW - elemLeft > this.constants.MODAL_WIDTH));
+                positionEnabled['bottom'] = ((winH - elemTop - elemH > this.constants.MODAL_HEIGHT) && (winW - elemLeft > this.constants.MODAL_WIDTH));
                 positionEnabled['center'] = true;
                 if (!positionEnabled[modalPosition]) {
                     ['top', 'left', 'right', 'bottom', 'center'].forEach((prop) => {

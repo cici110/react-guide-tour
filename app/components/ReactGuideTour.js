@@ -45,7 +45,9 @@ export default class ReactGuideTour extends React.Component {
         'top': 'bottom',
         'bottom': 'top',
         'right': 'left',
+        'lefttop': 'righttop',
         'left': 'right',
+        'leftbottom': 'rightbottom',
         'center': 'none'
     };
     constants = {
@@ -150,7 +152,7 @@ export default class ReactGuideTour extends React.Component {
             if (typeof focusElem !== 'undefined' && focusElem !== null) {
                 // Set focused element new style
                 focusElem.style.zIndex = (this.state.overlayZindex + 1).toString();
-                focusElem.style.position = focusElem.style.position === 'absolute' ? 'absolute' : 'relative';
+                focusElem.style.position = $(focusElem).css("position") === 'absolute' ? 'absolute' : 'relative';
                 //focusElem.style.borderRadius = '2px';
                 //focusElem.style.boxShadow = '0 0 3px rgba(0,0,0,.5)';
                 var border = '2px solid #fdc02f';
@@ -164,7 +166,7 @@ export default class ReactGuideTour extends React.Component {
                 }
             }
             // Evaluating modal position
-            var modalPosition = 'top';
+            var modalPosition = 'left';
             if (typeof steps[currStep].modalPosition === 'string') {
                 if (this.modalPositions.indexOf(steps[currStep].modalPosition) !== -1) {
                     modalPosition = steps[currStep].modalPosition;
@@ -186,13 +188,13 @@ export default class ReactGuideTour extends React.Component {
             // Check and eventually correct modal position (change if bool enabled and for lack of space)
             if (this.props.enableAutoPositioning ) {
                 var positionEnabled = {};
-                positionEnabled['top'] = (elemTop > 150 && (winW - elemLeft > this.constants.MODAL_WIDTH));
-                positionEnabled['left'] = (elemLeft > this.constants.MODAL_WIDTH && (winH - elemTop > 150));
-                positionEnabled['right'] = ((winW - elemLeft - elemW > this.constants.MODAL_WIDTH) && (winH - elemTop > 150));
+                positionEnabled['left'] = (elemLeft > this.constants.MODAL_WIDTH && (winH - elemTop > this.constants.OFFSET_ARROW));
+                positionEnabled['right'] = ((winW - elemLeft - elemW > this.constants.MODAL_WIDTH) && (winH - elemTop > this.constants.OFFSET_ARROW));
+                positionEnabled['top'] = (elemTop > this.constants.OFFSET_ARROW && (winW - elemLeft > this.constants.MODAL_WIDTH));
                 positionEnabled['bottom'] = ((winH - elemTop - elemH > this.constants.MODAL_HEIGHT) && (winW - elemLeft > this.constants.MODAL_WIDTH));
                 positionEnabled['center'] = true;
                 if (!positionEnabled[modalPosition]) {
-                    ['top', 'left', 'right', 'bottom', 'center'].forEach((prop) => {
+                    ['left', 'right', 'top', 'bottom', 'center'].forEach((prop) => {
                         if (!positionEnabled[modalPosition] && positionEnabled[prop]) {
                             modalPosition = prop;
                         }
@@ -221,7 +223,16 @@ export default class ReactGuideTour extends React.Component {
                     left = elemLeft + elemW + this.constants.MODAL_ARROW_W + this.constants.DISTANCE_FROM_ELEM - scrollLeft;
                     break;
                 case 'left':
-                    adjustTop = elemTop - this.constants.OFFSET_ARROW - scrollTop > this.constants.OFFSET_ARROW ? elemTop - this.constants.OFFSET_ARROW - scrollTop : this.constants.OFFSET_ARROW;
+                    // adjustTop = elemTop - this.constants.OFFSET_ARROW - scrollTop > this.constants.OFFSET_ARROW ? elemTop - this.constants.OFFSET_ARROW - scrollTop : this.constants.OFFSET_ARROW;
+                    if (elemTop - scrollTop + elemH / 2 < this.constants.MODAL_HEIGHT / 2) {
+                        adjustTop = elemTop - scrollTop + elemH / 2 - 24 > 0 ? elemTop - scrollTop + elemH / 2 - 24 : 0;
+                        modalPosition = "lefttop";
+                    } else if (elemTop - scrollTop + elemH / 2 + this.constants.MODAL_HEIGHT /2 > winH) {
+                        adjustTop = winH - (elemTop - scrollTop + elemH / 2) > 24 ? elemTop - scrollTop + elemH / 2 + 24 - this.constants.MODAL_HEIGHT : winH - this.constants.MODAL_HEIGHT;
+                        modalPosition = "leftbottom";
+                    } else {
+                        adjustTop = elemTop - scrollTop + elemH /2 - this.constants.MODAL_HEIGHT /2;
+                    }
                     top = adjustTop.toString() + 'px';
                     left = elemLeft - this.constants.MODAL_WIDTH - this.constants.MODAL_ARROW_W - this.constants.DISTANCE_FROM_ELEM - modalPad - scrollLeft;
                     break;

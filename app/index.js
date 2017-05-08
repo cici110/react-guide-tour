@@ -16,19 +16,19 @@ var ReactGuideTourDemo = React.createClass({
                 selector: '.stop-1',
                 message: 'This is a beautiful title!',
                 image:'http://placehold.it/256x192',
-                modalPosition: 'bottom'
+                //modalPosition: 'bottom'
             },
             {
                 selector: '.stop-2',
                 message: 'Let\'s point here!',
                 image:'http://placehold.it/256x192',
-                modalPosition: 'right'
+                //modalPosition: 'right'
             },
             {
                 selector: () => $('.stop-3')[0],
                 message: 'This is on the right!',
                 image:'http://placehold.it/256x192',
-                modalPosition: 'right',
+                //modalPosition: 'right',
                 onChange (index) {
                     //function content
                 }
@@ -37,13 +37,13 @@ var ReactGuideTourDemo = React.createClass({
                 selector: '.stop-4',
                 message: 'The modal is on the left',
                 image:'http://placehold.it/256x192',
-                modalPosition: 'left'
+                //modalPosition: 'left'
             },
             {
                 selector: '.stop-5',
                 message: 'The modal is on the left',
                 image:'http://placehold.it/256x192',
-                modalPosition: 'left'
+                //modalPosition: 'left'
             },
             {
                 message: 'Done',
